@@ -1,0 +1,36 @@
+*.class
+*.log
+*.logs
+*.orig
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.lst
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+*.iml
+.classpath
+.project
+.metadata
+Servers
+.recommenders
+.settings/
+*.launch
+/target/
+/WEB-INF/
+.mymetadata
+.metadata
+.recommenders
+Servers
+META-INF/MANIFEST.MF
+.tern-project
+.idea
+/build/
+*.base
+${project.logFileOutputPath}
+rebel.xml
