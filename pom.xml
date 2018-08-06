@@ -1,0 +1,511 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xyh</groupId>
+	<artifactId>javanote</artifactId>
+	<version>0.1.1-SNAPSHOT</version>
+	<!-- <version>${project.release.version}</version> -->
+	<packaging>pom</packaging>
+	<name>hcxyh</name>
+	<description>javanote--离职总结</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<modules>
+		<module>collect-summarize</module>
+	</modules>
+
+
+
+	<properties>
+		<project.release.version>0.1.1-SNAPSHOT</project.release.version>
+		<!-- 开发发布编译变量 -->
+		<jdk.version>1.7</jdk.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<downloadSources>true</downloadSources>
+		<downloadJavadocs>true</downloadJavadocs>
+		<servlet.version>2.5</servlet.version>
+		<!-- 插件版本管理 -->
+		<maven_compiler_plugin_version>2.3.2</maven_compiler_plugin_version>
+		<maven_source_plugin_version>2.1.1</maven_source_plugin_version>
+		<maven_jar_plugin_version>2.3.2</maven_jar_plugin_version>
+		<maven_war_plugin_version>2.1.1</maven_war_plugin_version>
+		<maven_install_plugin_version>2.3.1</maven_install_plugin_version>
+		<maven_deploy_plugin_version>2.7</maven_deploy_plugin_version>
+		<maven_surefire_plugin_version>2.17</maven_surefire_plugin_version>
+		<docker-maven-plugin_version>1.0.0</docker-maven-plugin_version>
+		<skip_maven_deploy>false</skip_maven_deploy>
+		<!-- 跳过javadoc的生成 -->
+		<maven.javadoc.skip>true</maven.javadoc.skip>
+		<fastjson.version>1.2.15</fastjson.version>
+		<druid.version>1.1.5</druid.version>
+		<oracle.driver.version>11.2.0</oracle.driver.version>
+		<poi.version>3.12</poi.version>
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<!-- 插件配置 -->
+		<compiler.version>3.6.0</compiler.version>
+		<jar.version>2.6</jar.version>
+		<war.version>2.6</war.version>
+	</properties>
+
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<properties>
+				<project.release.version>0.1</project.release.version>
+				<!-- 发布时使用mvn deploy -P release 的命令，那么会自动使用0.1作为发布版本，发布到release仓库；默认使用快照版本 -->
+			</properties>
+		</profile>
+	</profiles>
+
+	<!-- 设定主仓库，按设定顺序进行查找。 -->
+	<repositories>
+		<repository>
+			<id>code-main</id>
+			<name>Team Nexus Of MAS</name>
+			<url>https://maven.aliyun.com/repository/public</url>
+		</repository>
+	</repositories>
+
+	<!-- 设定插件仓库 -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>pugin-main</id>
+			<name>Team Nexus Of MAS</name>
+			<url>https://maven.aliyun.com/repository/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- 开发者信息 -->
+	<developers>
+		<!--开发人员可将自己的信息添加在此，有些系统可识别此类信息用于生成文档 -->
+		<developer>
+			<id>xyh</id>
+			<name>hcxyh</name>
+			<email>iwo at iwo.io</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+	<organization>
+		<name>xyh</name>
+		<url>http://hcxyh.top</url>
+	</organization>
+
+	<!--定义snapshots库和releases库的nexus地址 -->
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>  <!-- 与setting.xml 中server镜像服务器id保持一致 -->
+			<url>
+                https://maven.aliyun.com/repository/public
+            </url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>
+                https://maven.aliyun.com/repository/public
+            </url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- 暂时全部引用到子项目中 -->
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<!-- <exclusions> -->
+			<!-- <exclusion> -->
+			<!-- <groupId>ch.qos.logback</groupId> -->
+			<!-- <artifactId>logback-classic</artifactId> -->
+			<!-- </exclusion> -->
+			<!-- <exclusion> -->
+			<!-- <groupId>org.springframework.boot</groupId> -->
+			<!-- <artifactId>spring-boot-starter-logging</artifactId> -->
+			<!-- </exclusion> -->
+			<!-- </exclusions> -->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--将默认的logback替换成log4j2 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- <exclusions> -->
+			<!-- <exclusion> -->
+			<!-- <groupId>ch.qos.logback</groupId> -->
+			<!-- <artifactId>logback-classic</artifactId> -->
+			<!-- </exclusion> -->
+			<!-- <exclusion> -->
+			<!-- <groupId>org.springframework.boot</groupId> -->
+			<!-- <artifactId>spring-boot-starter-logging</artifactId> -->
+			<!-- </exclusion> -->
+			<!-- </exclusions> -->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		<!--将默认的logback替换成log4j2 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!-- caching -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!--spring session -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session</artifactId>
+			<version>1.3.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+		<!--第三方库 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>im.dhc.oracle</groupId> -->
+		<!-- <artifactId>ojdbc6</artifactId> -->
+		<!-- <version>${oracle.driver.version}</version> -->
+		<!-- </dependency> -->
+
+		<!-- poi office -->
+		<!-- https://mvnrepository.com/artifact/org.jeecg/easypoi-web -->
+		<dependency>
+			<groupId>org.jeecg</groupId>
+			<artifactId>easypoi-web</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jeecg</groupId>
+			<artifactId>easypoi-base</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jeecg</groupId>
+			<artifactId>easypoi-annotation</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+
+		<!--引入Swagger2的依赖 <dependency> <groupId>io.springfox</groupId> <artifactId>springfox-swagger2</artifactId> 
+			<version>${springfox.version}</version> </dependency> <dependency> <groupId>io.springfox</groupId> 
+			<artifactId>springfox-swagger-ui</artifactId> <version>${springfox.version}</version> 
+			</dependency> <dependency> <groupId>com.github.caspar-chen</groupId> <artifactId>swagger-ui-layer</artifactId> 
+			<version>0.0.2</version> </dependency> -->
+		<!--引入reflect的依赖 -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.10</version>
+		</dependency>
+		<!--集成安全框架 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<includeEmptyDirs>true</includeEmptyDirs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven_jar_plugin_version}</version>
+					<!-- <configuration> -->
+					<!-- <excludes> -->
+					<!-- <exclude>**/config/*</exclude> -->
+					<!-- </excludes> -->
+					<!-- </configuration> -->
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven_war_plugin_version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven_install_plugin_version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven_deploy_plugin_version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.5.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>UTF8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven_compiler_plugin_version}</version>
+					<configuration>
+						<fork>true</fork>
+						<source>${java_source_version}</source>
+						<target>${java_target_version}</target>
+						<encoding>${file_encoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>${docker-maven-plugin_version}</version>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-dependency-plugin
+										</artifactId>
+										<versionRange>
+											[2.1,)
+										</versionRange>
+										<goals>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>3.0.4</version>
+					<configuration>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>2.17</version>
+					<configuration>
+
+					</configuration>
+				</plugin>
+
+
+				<!-- shade插件绑定的是package生命周期目标，并设置com.xyh.Application为Main-Class，以及将META-INF/spring.*文件合并(追加而非覆盖)，并过滤掉所有依赖的META/INF中SF,DSA,RSA后缀文件。这里涉及到filter配置和transformer配置。 -->
+
+				<!-- <plugin> -->
+				<!-- <groupId>org.apache.maven.plugins</groupId> -->
+				<!-- <artifactId>maven-shade-plugin</artifactId> -->
+				<!-- <version>1.4</version> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <phase>package</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>shade</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <filters> -->
+				<!-- <filter> -->
+				<!-- <artifact>*:*</artifact> -->
+				<!-- <excludes> -->
+				<!-- <exclude>META-INF/*.SF</exclude> -->
+				<!-- <exclude>META-INF/*.DSA</exclude> -->
+				<!-- <exclude>META-INF/*.RSA</exclude> -->
+				<!-- </excludes> -->
+				<!-- </filter> -->
+				<!-- </filters> -->
+				<!-- <transformers> -->
+				<!-- <transformer -->
+				<!-- implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> -->
+				<!-- <mainClass>com.lcifn.Application</mainClass> -->
+				<!-- </transformer> -->
+				<!-- <transformer -->
+				<!-- implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer"> -->
+				<!-- <resource>META-INF/spring.handlers</resource> -->
+				<!-- </transformer> -->
+				<!-- <transformer -->
+				<!-- implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer"> -->
+				<!-- <resource>META-INF/spring.schemas</resource> -->
+				<!-- </transformer> -->
+				<!-- </transformers> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- </plugin> -->
+				<!-- maven-dependency-plugin 把依赖的jar包拷到指定目录下 -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.apache.maven.plugins</groupId> -->
+				<!-- <artifactId>maven-dependency-plugin</artifactId> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>copy-dependencies</id> -->
+				<!-- <phase>process-resources</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>copy-dependencies</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <excludeScope>provided</excludeScope> -->
+				<!-- <excludeArtifactIds> -->
+				<!-- module1,module2 -->
+				<!-- </excludeArtifactIds> -->
+				<!-- <outputDirectory>${project.build.directory}/lib</outputDirectory> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- <execution> -->
+				<!-- <id>copy-modules</id> -->
+				<!-- <phase>process-resources</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>copy-dependencies</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <includeArtifactIds> -->
+				<!-- module1,module2 -->
+				<!-- </includeArtifactIds> -->
+				<!-- <outputDirectory>${project.build.directory}/lib/modules</outputDirectory> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- </plugin> -->
+
+
+
+				<!-- maven-resources-plugin 把依赖的资源拷到指定目录下 -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.apache.maven.plugins</groupId> -->
+				<!-- <artifactId>maven-resources-plugin</artifactId> -->
+				<!-- <version>2.6</version> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>copy-resources</id> -->
+				<!-- here the phase you need -->
+				<!-- <phase>validate</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>copy-resources</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <outputDirectory>${basedir}/target/test-classes</outputDirectory> -->
+				<!-- <resources> -->
+				<!-- <resource> -->
+				<!-- <directory>${basedir}/src/main/webapp/WEB-INF/config</directory> -->
+				<!-- <filtering>true</filtering> -->
+				<!-- </resource> -->
+				<!-- </resources> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- </plugin> -->
+
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<!-- Compiler 插件, 设定JDK版本 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+					<optimize>true</optimize>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<failIfNoTests>false</failIfNoTests>
+					<trimStackTrace>false</trimStackTrace>
+					<redirectTestOutputToFile>true</redirectTestOutputToFile>
+					<excludes>
+						<exclude>**/*TestCase.java</exclude>
+					</excludes>
+					<runOrder>alphabetical</runOrder>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
