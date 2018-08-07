@@ -10,13 +10,43 @@
 	</parent>
 	<artifactId>collect-summarize</artifactId>
 
+	<properties>
+		<activemq.version>5.15.4</activemq.version>
+		<spring_version>4.3.7.RELEASE</spring_version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.2</version>
 		</dependency>
-		
+		<!-- ActiveMQ -->
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+			<version>${activemq.version}</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.activemq</groupId> -->
+<!-- 			<artifactId>activemq-pool</artifactId> -->
+<!-- 			<version>${activemq_version}</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring_version}</version>
+		</dependency>
+
+		<!-- 热部署 -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
 	</dependencies>
 
 </project>
