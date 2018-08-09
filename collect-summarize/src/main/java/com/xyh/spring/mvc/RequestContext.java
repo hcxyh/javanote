@@ -6,6 +6,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -141,8 +142,7 @@ public class RequestContext {
     	优点：可以在非Bean中直接获取。缺点：如果使用的地方较多，代码非常繁琐；因此可以与其他方法配合使用。
     */
    HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-   
-   
+   HttpServletResponse response = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getResponse();   
    /**
     	方法5：@ModelAttribute方法
     	测试结果：线程不安全
