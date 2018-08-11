@@ -7,5 +7,7 @@ package com.xyh.java.base;
 * 
 */
 public class HashCodeNote {
+	
+	
 
 }

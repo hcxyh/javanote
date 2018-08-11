@@ -26,7 +26,7 @@
 	<properties>
 		<project.release.version>0.1.1-SNAPSHOT</project.release.version>
 		<!-- 开发发布编译变量 -->
-		<jdk.version>1.7</jdk.version>
+		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<downloadSources>true</downloadSources>
 		<downloadJavadocs>true</downloadJavadocs>
@@ -175,6 +175,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

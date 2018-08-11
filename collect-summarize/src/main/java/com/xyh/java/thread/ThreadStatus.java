@@ -1,7 +1,7 @@
 package com.xyh.java.thread;
 
 /**
- * 
+ * 线程中的几种状态,及其切换.
  * @author hcxyh 2018年8月9日
  *
  */

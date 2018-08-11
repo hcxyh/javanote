@@ -6,7 +6,7 @@ package com.xyh.java;
 * @date 2018年8月9日 下午9:43:58
 * 
 */
-public class ObjectNote {
+public class ObjectNote<T> extends Object{
 	
 	/**	
 	 * 
@@ -23,9 +23,21 @@ public class ObjectNote {
 	 * hashCode()   
 	 * 		1.同一个对象的hashCode一定相同.hashCode相同对象可以不同.
 	 * 		2."=="是比较两个引用是否指向堆内存里的同一个地址（同一个对象）
-	 * 
-	 * equals()
+	 * Java规范:
+	 * 	1、如果两个对象equals，Java运行时环境会认为他们的hashcode一定相等。
+	 *  2、如果两个对象不equals，他们的hashcode有可能相等。
+	 *  3、如果两个对象hashcode相等，他们不一定equals。 
+	 *  4、如果两个对象hashcode不相等，他们一定不equals。
 	 */
 	
+	public Boolean equalsNote(T t) {
+		//判断两个对象Heap上地址是否一致
+		return this == t;
+	}
+	
+	public int hashCodeNote() {
+		//hashcode()方法返回一个int数，在Object类中的默认实现是“将该对象的内部地址转换成一个整数返回”。 
+		return Integer.parseInt(this.toString());
+	}
 	
 }

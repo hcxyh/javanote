@@ -68,5 +68,43 @@ ExtClassLoader和AppClassLoader都位于sun.misc.Launcher类中，代码不是�
 	代码中Launcher的构造方法是主入口，很容易可以看到，JVM把AppClassLoader的父类加载器设置为ExtClassLoader，而ExtClassLoader却没有父类加载器。其实很多文章在介绍ClassLoader的等级结构时把Bootstrap ClassLoader也列在ExtClassLoader的上一级中，其实Bootstrap ClassLoader并不属于JVM的类等级层次，因为Bootstrap ClassLoader并没有遵守ClassLoader的加载规则。另外Bootstrap ClassLoader并没有子类，我们在应用中能提取到的顶层父类是ExtClassLoader。
 }
 如果我们要实现自己的类加载器，不管你是直接实现抽象类ClassLoader，还是继承URLClassLoader类，或者其他子类，它的父加载器都是AppClassLoader，因为不管调用哪个父类构造器，创建的对象都必须最终调用getSystemClassLoader()作为父加载器。而getSystemClassLoader()方法获取到的正是AppClassLoader。
+
+
+/**
+	 * java.lang.ClassLoader 类加载器的划分: 启动类加载器(Bootstrap ClassLoader):
+	 * 这个类加载器负责将<JAVA_HOME>\lib目录下的类库加载到虚拟机内存中,用来加载java的核心库,此类加载器并不继承于java.lang.ClassLoader,
+	 * 不能被java程序直接调用,代码是使用C++编写的.是虚拟机自身的一部分.
+	 * 
+	 * 扩展类加载器(Extendsion ClassLoader):
+	 * 这个类加载器负责加载<JAVA_HOME>\lib\ext目录下的类库,用来加载java的扩展库,开发者可以直接使用这个类加载器.
+	 * 
+	 * 应用程序类加载器(Application ClassLoader):
+	 * 这个类加载器负责加载用户类路径(CLASSPATH)下的类库,一般我们编写的java类都是由这个类加载器加载,
+	 * 这个类加载器是CLassLoader中的getSystemClassLoader()方法的返回值,所以也称为系统类加载器.一般情况下这就是系统默认的类加载器.
+	 * 
+	 * 除此之外,我们还可以加入自己定义的类加载器,以满足特殊的需求,需要继承java.lang.ClassLoader类.
+	 */
 	
+	/**
+	 * 类加载器的双亲委派模型:
+	 * 双亲委派模型是一种组织类加载器之间关系的一种规范,他的工作原理是:如果一个类加载器收到了类加载的请求,
+	 * 它不会自己去尝试加载这个类,而是把这个请求委派给父类加载器去完成,这样层层递进,最终所有的加载请求都被传到最顶层的启动类加载器中,
+	 * 只有当父类加载器无法完成这个加载请求(它的搜索范围内没有找到所需的类)时,才会交给子类加载器去尝试加载.
+	 * 
+	 * 这样的好处是:java类随着它的类加载器一起具备了带有优先级的层次关系.这是十分必要的,比如java.langObject,
+	 * 它存放在\jre\lib\rt.jar中,它是所有java类的父类,因此无论哪个类加载都要加载这个类,
+	 * 最终所有的加载请求都汇总到顶层的启动类加载器中,因此Object类会由启动类加载器来加载,所以加载的都是同一个类,
+	 * 如果不使用双亲委派模型,由各个类加载器自行去加载的话,系统中就会出现不止一个Object类,应用程序就会全乱了.
+	 */
+	
+	
+	/**
+	 * Class.forname()与ClassLoader.loadClass():
+	 * Class.forname():是一个静态方法,最常用的是Class.forname(String className);
+	 * 根据传入的类的全限定名返回一个Class对象.该方法在将Class文件加载到内存的同时,会执行类的初始化.
+	 * 
+	 * ClassLoader.loadClass():这是一个实例方法,需要一个ClassLoader对象来调用该方法,
+	 * 该方法将Class文件加载到内存时,并不会执行类的初始化,直到这个类第一次使用时才进行初始化.
+	 * 该方法因为需要得到一个ClassLoader对象,所以可以根据需要指定使用哪个类加载器.
+	 */
 	
