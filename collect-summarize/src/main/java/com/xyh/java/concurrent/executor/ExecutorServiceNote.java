@@ -1,13 +1,20 @@
 package com.xyh.java.concurrent.executor;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * 执行器服务
  * @author hcxyh  2018年8月10日
  *
  */
-public class ExecutorServiceNote {
+public interface ExecutorServiceNote extends Executor{
 	
 	/**
 	 * XXX
@@ -85,5 +92,39 @@ public class ExecutorServiceNote {
 
 	 */
 	
+	
+	
+	 //关闭线程池，之前提交的会执行完毕，新提交的任务不再接收
+    void shutdown();
+      //立即关闭线程池，已提交的任务不再执行，会关闭正在执行的线程，返回队列中没有执行的任务
+    List<Runnable> shutdownNow();
+      //是否调用过shutdown或shutdownNow
+    boolean isShutdown();
+      //线程池是否已经完全终止
+    boolean isTerminated();
+      //在指定时间内线程是否终止  
+    boolean awaitTermination(long timeout, TimeUnit unit)
+        throws InterruptedException;
+      //提交任务，返回异步执行结果
+    <T> Future<T> submit(Callable<T> task);
+      //提交任务，返回结果，在实际的使用中可以将result传入task，修改result的属性，
+      //在Future中返回修改后的结果，从而解决在Runnable中无法返回值的问题
+    <T> Future<T> submit(Runnable task, T result);
+      //提交任务，返回异步执行结果
+    Future<?> submit(Runnable task);
+      //提交一个集合的任务，返回这个集合的异步Future
+    <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)
+        throws InterruptedException;
+      //指定时间内，提交一个集合的任务，返回这个集合的异步Future
+    <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks,
+                                  long timeout, TimeUnit unit)
+        throws InterruptedException;
+      //提交一个集合的任务，返回这个集合中任一的异步Future
+    <T> T invokeAny(Collection<? extends Callable<T>> tasks)
+        throws InterruptedException, ExecutionException;
+      //指定时间内，提交一个集合的任务，返回这个集合中任一的异步Future
+    <T> T invokeAny(Collection<? extends Callable<T>> tasks,
+                    long timeout, TimeUnit unit)
+        throws InterruptedException, ExecutionException, TimeoutException;
 	
 }

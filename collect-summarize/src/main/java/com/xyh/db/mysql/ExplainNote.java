@@ -20,6 +20,17 @@ public class ExplainNote {
 		9.DISTINCT 对VT8中的记录进行去重。产生虚拟表VT9.
 		10.ORDER BY 将虚拟表VT9中的记录按照<order_by_list>进行排序操作，产生虚拟表VT10.
 		11.TOP 取出指定行的记录，产生虚拟表VT11, 并将结果返回。
+ * 		From
+ * 		ON
+ * 		(left,right,)Join
+ * 		where
+ * 		group by
+ * 		having
+ * 		select
+ * 		Distinct
+ * 		order by 
+ * 		limit 
+		from >  on > (left/right)join >where > Group by > having > select > DISTINCT > order by > TOP
 	 */
 	
 }
