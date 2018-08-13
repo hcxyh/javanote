@@ -11,6 +11,7 @@ package com.xyh.articlecollects;
  * 1.java工程师修炼之道  --> https://github.com/superhj1987/pragmatic-java-engineer
  * 2.为什么需要前后端分离
  		-->  https://mp.weixin.qq.com/s/k1IIfAaMRgEtJp5VSBQxqQ
+ 			 https://mp.weixin.qq.com/s/bSl1FKWFznVzn_1wbBoOCA
    3.天池中间件大赛百万队列存储设计总结 
    		-->  https://mp.weixin.qq.com/s/tXVdXtf6DAkVSLK-97jhlg
    		
