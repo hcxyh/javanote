@@ -17,7 +17,6 @@ import org.apache.zookeeper.data.Stat;
 
 /**
 * @ClassName: CuratorClient
-* @Description: TODO http://www.cnblogs.com/leesf456/p/6032716.html
 * @author xueyh
 * @date 2018年1月24日 下午4:40:51
 * 

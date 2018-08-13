@@ -33,6 +33,8 @@ public class SerializableNote {
 	 * 
 	 * 		3.kyro
 	 * 
+	 * 		4.protostuff
+	 * 
 	 */
 	
 }

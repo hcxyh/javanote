@@ -7,7 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import hundsun.secrity.Base64;
+
+import com.xyh.java.secrity.Base64;
 
 
 public class Base64Utils {

@@ -7,7 +7,6 @@ package com.xyh.db.mysql;
  */
 public class MysqlMasterSlave {
 	
-
 	/**
 	 * TODO
 	 	1.复制解决的基本问题

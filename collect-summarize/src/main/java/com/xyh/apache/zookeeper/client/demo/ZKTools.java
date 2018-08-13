@@ -22,7 +22,6 @@ public class ZKTools {
 	/**
 	 * 1.节点监听
 	 * 2.子节点监听
-	 * http://www.cnblogs.com/leesf456/p/6032716.html
 	 */
 	
 	
