@@ -72,6 +72,11 @@ public class TranscationManangerNote {
 			按照支付账期每日进行T+1对账，对账原则：以支付交易记录为准，对流量中心订单记录+支付网关交易记录+省CRM充值记录三方比对，将某些中间状态的订单（例如：支付成功、待退款）核对后将订单状态流转完结（已完成、退款成功）。
 		结算稽核：
 			对账成功后的数据定期进入结算流程，对支付网关周期内的支付金额与结算数据的金额进行核对，稽核成功后进行财务结算流程，将钱结算给省公司，并提供结算明细给省公司，供省公司与直充成本记录进行复核。
-	TODO https://mp.weixin.qq.com/s/pryzttOE5rdiyVeCmD22Bw
+	TODO 
+		https://mp.weixin.qq.com/s/pryzttOE5rdiyVeCmD22Bw
+		分布式事务总结:(可能不是很完善)
+			1.https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA5Mjg2MDQ5NQ==&scene=110#wechat_redirect
+			2.lcn 分布式事务
+	
 	 */
 }

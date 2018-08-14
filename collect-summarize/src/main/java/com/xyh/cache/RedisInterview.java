@@ -74,6 +74,7 @@ public class RedisInterview {
 	 
 	 
 	 4.缓存与数据库数据不一致
+	 	TODO https://mp.weixin.qq.com/s/XxgVsAxp5axplNDatfXzrA
 	 	读请求: 先操作缓存还是先操作数据库?
 	 		先读cache，再读db
 				如果，cache hit，则直接返回数据
