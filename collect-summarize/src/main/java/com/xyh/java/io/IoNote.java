@@ -3,6 +3,7 @@ package com.xyh.java.io;
 public class IoNote {
 	
 	/**
+	   磁盘IO
 	 IO：(走向是以内存为基准的，即往内存中读数据是输入流，从内存中往外写是输出流。)
 	 	1.字节流
 	 		1.InputStream 		-->  read(byte[]) 

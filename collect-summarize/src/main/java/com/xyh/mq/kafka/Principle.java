@@ -3,6 +3,8 @@ package com.xyh.mq.kafka;
 /**
  * 
  * @author hcxyh  2018年8月7日
+ * TODO https://mp.weixin.qq.com/mp/homepage?__biz=MzU5ODUwNzY1Nw==&hid=1&sn=4dc4f37ace0edaece205f28912d6a1c1&scene=1&devicetype=iOS11.2.6&version=16070026&lang=zh_CN&nettype=3G+&ascene=1&session_us=gh_14dd347dfc9e&wx_header=1&from=groupmessage&isappinstalled=0&fontScale=100
+ * 
  *
  */
 public class Principle {

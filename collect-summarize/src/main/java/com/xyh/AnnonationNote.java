@@ -482,5 +482,29 @@ public enum AnnonationNote {
 		集群（cluster）是指在多台不同的服务器中部署相同应用或服务模块，构成一个集群，通过负载均衡设备对外提供服务。
 	 */
 	
+	/**
+	 2018-08-14
+	 	小结：
+	 		1.开发要有一个熟悉和方便的环境,多读源码,多debug,
+	 			eclipse + jdk8 + redis + maven + tomcat + git + mysql  
+	 		2.学习技术和线上测试环境
+	 		 	linux + zookeeper + searchEngline（elasticsearch，solr） + mysql + docker 
+	 			+mq  + nexus + jenkins + gitlab + docker + nginx 
+	 		3.基本功
+	 			spring + mybatis + springcloud + dubbo 
+	 		4.工具
+	 			chrome + plugin [postman + fiddle + insightio ]
+	 			Tampermonkey
+	 			https://greasyfork.org/zh-CN/scripts 
+	 			1.文本编译器  	sublimetext 
+	 			2.pdf阅读器 	foxitReader
+	 			3.有道词典		
+	 			4.everything
+	 			5.vmware(伪)集群   + xshell 
+	 		5.因为有些点好长时间都没有用到,难免有些生疏,因而目前项目里面还有比较多的链接,
+	 		后续慢慢会一点点啃掉.
+	 			
+	 */
+	
 
 }

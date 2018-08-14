@@ -13,7 +13,10 @@ package com.xyh.articlecollects;
  		-->  https://mp.weixin.qq.com/s/k1IIfAaMRgEtJp5VSBQxqQ
    3.天池中间件大赛百万队列存储设计总结 
    		-->  https://mp.weixin.qq.com/s/tXVdXtf6DAkVSLK-97jhlg
-   		
+   4.CQRS架构在答题小程序
+    	-->  https://mp.weixin.qq.com/s/da1a4NF0JcmPxlAYdtxQdg
+   5.同步,异步,阻塞,非阻塞
+   		-->  https://www.jianshu.com/p/aed6067eeac9
    
  * 
  */ 

@@ -26,6 +26,9 @@ public class DbNote {
 	 * 			show profiles
 	 * 3.	 set global slow_query_log=1
 	 * 		 show variables  like '%slow_query_log%';
+	 * 
+	 * 4.druid.starter源码分析  
+	 * 		-->  https://mp.weixin.qq.com/s/PAwIKYRQJQd4QCaq_vNTQA
 	 */
 	
 }

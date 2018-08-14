@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.google.common.util.concurrent.RateLimiter;
 
 /**
- * 
+ * TODO 可供参考的限流框架  https://github.com/wangzheng0822/ratelimiter4j 
  * @author hcxyh  2018年8月8日
  * 限制总并发数（比如数据库连接池、线程池）、限制瞬时并发数（如nginx的limit_conn模块，
  * 用来限制瞬时并发连接数）、限制时间窗口内的平均速率
