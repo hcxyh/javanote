@@ -19,6 +19,7 @@
 
 	<modules>
 		<module>collect-summarize</module>
+		<module>my-rpc</module>
 	</modules>
 
 
@@ -197,10 +198,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-actuator</artifactId> -->
+<!-- 		</dependency> -->
 		<!--spring session -->
 		<dependency>
 			<groupId>org.springframework.session</groupId>
@@ -310,17 +311,17 @@
 						<encoding>UTF8</encoding>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven_compiler_plugin_version}</version>
-					<configuration>
-						<fork>true</fork>
-						<source>${java_source_version}</source>
-						<target>${java_target_version}</target>
-						<encoding>${file_encoding}</encoding>
-					</configuration>
-				</plugin>
+<!-- 				<plugin> -->
+<!-- 					<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 					<artifactId>maven-compiler-plugin</artifactId> -->
+<!-- 					<version>${maven_compiler_plugin_version}</version> -->
+<!-- 					<configuration> -->
+<!-- 						<fork>true</fork> -->
+<!-- 						<source>${java_source_version}</source> -->
+<!-- 						<target>${java_target_version}</target> -->
+<!-- 						<encoding>${file_encoding}</encoding> -->
+<!-- 					</configuration> -->
+<!-- 				</plugin> -->
 				<plugin>
 					<groupId>com.spotify</groupId>
 					<artifactId>docker-maven-plugin</artifactId>

@@ -79,3 +79,8 @@ package com.xyh.distribute.lock.zookeeper;
 //		releaseLock(ourLockPath);
 //	}
 //}
+
+public class SimpleDistributedLockMutex{
+	
+}
+

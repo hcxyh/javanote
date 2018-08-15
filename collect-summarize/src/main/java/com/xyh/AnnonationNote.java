@@ -503,6 +503,8 @@ public enum AnnonationNote {
 	 			5.vmware(伪)集群   + xshell 
 	 		5.因为有些点好长时间都没有用到,难免有些生疏,因而目前项目里面还有比较多的链接,
 	 		后续慢慢会一点点啃掉.
+	 		6.ReferenceLibrary 和 Maven Dependency , Java System Library.
+	 		
 	 			
 	 */
 	

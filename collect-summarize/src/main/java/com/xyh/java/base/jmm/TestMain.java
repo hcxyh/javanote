@@ -22,14 +22,14 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
  */
 public class TestMain {
 	
-	public static void main(String[] args) throws RunnerException {
-		Options opt = new OptionsBuilder()
-                .include(".*" + TestMain.class.getSimpleName() + ".*")
-                .forks(1)
-                .build();
-  
-		new Runner(opt).run();
-	}
+//	public static void main(String[] args) throws RunnerException {
+//		Options opt = new OptionsBuilder()
+//                .include(".*" + TestMain.class.getSimpleName() + ".*")
+//                .forks(1)
+//                .build();
+//  
+//		new Runner(opt).run();
+//	}
 	
 	/**
 	 * 1.测试模式
@@ -61,11 +61,11 @@ public class TestMain {
 		5.
 	*/
 	
-	@BenchmarkMode(Mode.Throughput)
-	@OutputTimeUnit(TimeUnit.SECONDS)
-	@GenerateMicroBenchmark()
-	public void test() {
-		System.out.println("test GenerateMicroBenchmark");
-	}
+//	@BenchmarkMode(Mode.Throughput)
+//	@OutputTimeUnit(TimeUnit.SECONDS)
+//	@GenerateMicroBenchmark()
+//	public void test() {
+//		System.out.println("test GenerateMicroBenchmark");
+//	}
 
 }
