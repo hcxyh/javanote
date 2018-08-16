@@ -17,6 +17,8 @@ import org.slf4j.MDC;
 *	日志文件改为json格式,通过每天的统计，
 *	经由Echarts来做视图化解析.
 * 
+*   MDC ,NDC
+* 
 */
 public class LogContext {
 	

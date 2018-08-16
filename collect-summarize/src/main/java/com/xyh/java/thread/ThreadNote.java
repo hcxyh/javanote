@@ -9,6 +9,26 @@ import java.util.Map;
  */
 public class ThreadNote {
 	
+	
+	public void testStackTraceElement() {
+		
+		//StackTraceElement类：含有能够获得文件名和当前执行的代码行号的方法；同时， 还有能够获得类名和方法名的方法； 
+		
+		Throwable t = new Throwable();
+		StackTraceElement[] frames = t.getStackTrace() ;
+		for(StackTraceElement frame : frames ) {
+			System.out.println();
+		}
+				   
+		
+		Map<Thread, StackTraceElement[]> map = Thread.getAllStackTraces();
+		for(Thread t1 : map.keySet())
+		{
+		    StackTraceElement[] framesStack = map.get(t1);
+		       System.out.println();
+		}
+	}
+	
 	/**
 	1.Runnable
 	2.Callable  --> executorService.submit(Callable) 返回 future.get() 

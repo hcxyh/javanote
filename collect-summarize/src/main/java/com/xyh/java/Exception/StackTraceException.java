@@ -1,5 +1,8 @@
 package com.xyh.java.Exception;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 /**
  * 
  * @author hcxyh  2018年8月11日
@@ -13,6 +16,17 @@ public class StackTraceException extends Exception{
 	 * 重寫 fillInStackTrace()
 	 * eg：JVM 的哪一个内存区不会抛异常？其它内存区会抛哪些异常？
 	 */
+	//org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace(e);
+	public static String getStackTrace(Throwable t) {
+	    StringWriter sw = new StringWriter();
+	    PrintWriter pw = new PrintWriter(sw);
+	    try {
+	        t.printStackTrace(pw);
+	        return sw.toString();
+	    } finally {
+	        pw.close();
+	    }
+	}
 	
 	public static long catchException() {
 		long start = System.nanoTime();
