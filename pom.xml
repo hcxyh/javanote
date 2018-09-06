@@ -20,6 +20,7 @@
 	<modules>
 		<module>collect-summarize</module>
 		<module>my-rpc</module>
+		<module>springboot-parent</module>
 	</modules>
 
 

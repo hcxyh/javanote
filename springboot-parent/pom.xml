@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.xyh</groupId>
+  <artifactId>springboot-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <description>ssm整合</description>
+  
+  <!-- 第一步：添加Springboot的parent -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>
+	</parent>
+
+	<!-- 设置我们项目的一些版本属性 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<!-- 公司网速不好,使用新的2.5.5 -->
+		<dubbo.version>2.5.5</dubbo.version>
+		<zkclient.version>0.10</zkclient.version>
+		<lombok.version>1.16.18</lombok.version>
+		<spring-boot.version>1.5.9.RELEASE</spring-boot.version>
+	</properties>
+
+	<!-- 声明一些项目依赖管理，方便我们的依赖版本管理 -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- Springboot依赖 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+
+			<!-- Springboot-web依赖 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+
+			<!-- 使用lombok实现JavaBean的get、set、toString、hashCode、equals等方法的自动生成 -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Dubbo依赖 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
+
+			<!-- zookeeper的客户端依赖 -->
+			<dependency>
+				<groupId>com.101tec</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+  
+  
+	<modules>
+		<module>service-api</module>
+		<module>service-provider</module>
+		<module>service-consumer</module>
+		<module>service-common</module>
+	</modules>
+</project>
