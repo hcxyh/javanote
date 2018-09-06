@@ -21,6 +21,7 @@
 		<module>collect-summarize</module>
 		<module>my-rpc</module>
 		<module>springboot-parent</module>
+		<module>quartz-cluster</module>
 	</modules>
 
 

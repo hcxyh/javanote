@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:component-scan base-package="net.aimeizi.quartz.*"/>
+	
+	
+<!-- org.quartz.scheduler.instanceName属性可为任何值，用在 JDBC JobStore 中来唯一标识实例，但是所有集群节点中必须相同。 -->
+<!-- org.quartz.scheduler.instanceId　属性为 AUTO即可，基于主机名和时间戳来产生实例 ID。 -->
+<!-- org.quartz.jobStore.class属性为 JobStoreTX，将任务持久化到数据中。因为集群中节点依赖于数据库来传播 Scheduler 实例的状态，你只能在使用 JDBC JobStore 时应用 Quartz 集群。这意味着你必须使用 JobStoreTX 或是 JobStoreCMT 作为 Job 存储；你不能在集群中使用 RAMJobStore。 -->
+<!-- org.quartz.jobStore.isClustered 属性为 true，你就告诉了 Scheduler 实例要它参与到一个集群当中。这一属性会贯穿于调度框架的始终，用于修改集群环境中操作的默认行为。 -->
+<!-- org.quartz.jobStore.clusterCheckinInterval 属性定义了Scheduler 实例检入到数据库中的频率(单位：毫秒)。Scheduler 检查是否其他的实例到了它们应当检入的时候未检入；这能指出一个失败的 Scheduler 实例，且当前 Scheduler 会以此来接管任何执行失败并可恢复的 Job。 -->
+<!-- 通过检入操作，Scheduler 也会更新自身的状态记录。clusterChedkinInterval 越小，Scheduler 节点检查失败的 Scheduler 实例就越频繁。默认值是 15000 (即15 秒)。 -->
+	
+    <!-- 启用@Aspect支持 -->
+    <aop:aspectj-autoproxy/>
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName">
+            <value>${driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${jdbcUrl}</value>
+        </property>
+        <property name="username">
+            <value>${username}</value>
+        </property>
+        <property name="password">
+            <value>${password}</value>
+        </property>
+        <property name="initialSize">
+            <value>${initialSize}</value>
+        </property>
+        <property name="maxActive">
+            <value>${maxActive}</value>
+        </property>
+        <property name="maxIdle">
+            <value>${maxIdle}</value>
+        </property>
+        <property name="maxWait">
+            <value>${maxWait}</value>
+        </property>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+        <property name="fetchSize">
+            <value>${jdbcTemplate.fetchSize}</value>
+        </property>
+    </bean>
+
+    <bean id="jdbcDao" class="com.dexcoder.dal.spring.JdbcDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+
+	<!-- quartz调度器 -->
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    
+        <property name="dataSource" ref="dataSource" />
+    
+        <property name="quartzProperties">
+            <props>
+            <!-- 在集群中的每一个实例都必须有一 个唯一的"instance id" ("org.quartz.scheduler.instanceId" 属性), 
+            	但是应该有相同的"scheduler instance name" ("org.quartz.scheduler.instanceName") -->
+                <prop key="org.quartz.scheduler.instanceName">ClusterScheduler</prop>
+                <prop key="org.quartz.scheduler.instanceId">AUTO</prop>
+                
+                <!-- 线程池配置 -->
+                <prop key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</prop>
+                <prop key="org.quartz.threadPool.threadCount">20</prop>
+                <prop key="org.quartz.threadPool.threadPriority">5</prop>
+                
+                <!-- 任务存储（JobStore）的配置 -->
+                <!-- JobStore 配置 -->
+                <!--  	内存存储
+                		# org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore
+    					# org.quartz.jobStore.misfireThreshold = MISFIRE_THRESHOLD -->
+                <!--  JobStoreTX 用于单机（standalone-Quartz）实现 -->
+                <prop key="org.quartz.jobStore.class">org.quartz.impl.jdbcjobstore.JobStoreTX</prop>
+
+                <!-- 集群配置,集群要求必须使用持久化存储 -->
+                <prop key="org.quartz.jobStore.isClustered">true</prop>
+                <!--Quartz的集群部署方案在架构上是分布式的，没有负责集中管理的节点，而是利用数据库锁的方式来实现集群环境下进行并发控制。BTW，分布式部署时需要保证各个节点的系统时间一致。-->
+                <prop key="org.quartz.jobStore.clusterCheckinInterval">15000</prop>
+                <prop key="org.quartz.jobStore.maxMisfiresToHandleAtATime">1</prop>
+                <prop key="org.quartz.jobStore.misfireThreshold">120000</prop>
+                <prop key="org.quartz.jobStore.tablePrefix">QRTZ_</prop>
+            </props>
+        </property>
+
+        <property name="schedulerName" value="ClusterScheduler" />
+
+        <property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
+
+        <!--可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
+        <property name="overwriteExistingJobs" value="true" />
+        
+        
+        <!-- TODO schedule的启停和 -->
+		<!--必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
+        <property name="startupDelay" value="30" />
+        <!-- 设置自动启动-->
+        <property name="autoStartup" value="true" />
+
+        <!--<property name="configLocation" value="classpath:quartz.properties" />-->
+        
+<!--         org.quartz.jobStore.class属性为JobStoreTX，
+			将任务持久化到数据中。因为集群中节点依赖于数据库来传播Scheduler实例的状态，你只能在使用JDBC JobStore时应用Quartz集群。 -->
+<!-- 		org.quartz.jobStore.isClustered属性为true，通知Scheduler实例要它参与到一个集群当中。 -->
+<!-- 		org.quartz.jobStore.clusterCheckinInterval属性定义了Scheduler实例检入到数据库中的频率(单位：毫秒)。
+			Scheduler检查是否其他的实例到了它们应当检入的时候未检入；这能指出一个失败的Scheduler实例，
+			且当前 Scheduler会以此来接管任何执行失败并可恢复的Job。通过检入操作，Scheduler 也会更新自身的状态记录。
+			clusterChedkinInterval越小，Scheduler节点检查失败的Scheduler实例就越频繁。默认值是 15000 (即15 秒)。 -->
+    </bean>
+</beans>

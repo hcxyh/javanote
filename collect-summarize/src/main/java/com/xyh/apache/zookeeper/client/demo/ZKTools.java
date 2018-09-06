@@ -24,7 +24,6 @@ public class ZKTools {
 	 * 2.子节点监听
 	 */
 	
-	
 	/**
 	 * TODO master选举：
 	 * 选择一个根节点，如/master_select，

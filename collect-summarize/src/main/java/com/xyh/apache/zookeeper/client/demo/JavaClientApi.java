@@ -46,7 +46,8 @@ public class JavaClientApi implements Watcher{
 	
 	
 	/**
-	 * Watcher，Zookeeper允许用户在指定节点上注册一些Watcher，并且在一些特定事件触发的时候，Zookeeper服务端会将事件通知到感兴趣的客户端。
+	 * Watcher，Zookeeper允许用户在指定节点上注册一些Watcher，并且在一些特定事件触发的时候，
+	 * Zookeeper服务端会将事件通知到感兴趣的客户端。
 	 * Watcher通知是一次性的，即一旦触发一次通知后，该Watcher就失效了，
 	 * 因此客户端需要反复注册Watcher，即程序中在process里面又注册了Watcher，
 	 * 否则，将无法获取c3节点的创建而导致子节点变化的事件。

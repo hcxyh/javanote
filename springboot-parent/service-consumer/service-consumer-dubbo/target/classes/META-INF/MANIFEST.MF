@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: service-consumer-dubbo
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Administrator
+Built-By: scai
 Implementation-Vendor-Id: com.xyh
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_181
 Implementation-URL: http://projects.spring.io/spring-boot/springboot-p
  arent/service-consumer/service-consumer-dubbo/
 Created-By: Maven Integration for Eclipse

@@ -26,14 +26,15 @@ public class CuratorClient {
 	public static void main(String[] args) throws Exception {
 		
 		String path = "/curator-file";
-		
+		//重试规则
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
         CuratorFramework client = CuratorFrameworkFactory.newClient("127.0.0.1:2181", 5000, 3000, retryPolicy);
         client.start();
-        System.out.println("Zookeeper session1 established. ");
+        //zkClient与Server建立连接成功
+        System.out.println("Zookeeper session1 established. ");  
         
         /**
-         * 值得注意的是session2会话含有隔离命名空间，
+          * 值得注意的是session2会话含有隔离命名空间，
          * 即客户端对Zookeeper上数据节点的任何操作都是相对/base目录进行的，
          * 这有利于实现不同的Zookeeper的业务之间的隔离。
          */
@@ -43,6 +44,16 @@ public class CuratorClient {
                 .sessionTimeoutMs(5000).retryPolicy(retryPolicy).namespace("base").build();
         client1.start();
         System.out.println("Zookeeper session2 established. ");  
+        
+        /**	
+            * 节点类型
+           * EPHEMERAL
+           * PERSISTENT
+           * PERSISTENT_SEQUENTIAL
+           * EPHEMERAL_SEQUENTIAL
+           * 
+           * 
+         */
         
         //创建节点
         client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath(path, "init".getBytes());
