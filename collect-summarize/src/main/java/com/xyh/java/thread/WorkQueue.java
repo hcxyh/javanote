@@ -1,11 +1,3 @@
-/**   
-* @Title: WorkQueue.java
-* @Package com.xyh.java.thread
-* @Description: TODO(用一句话描述该文件做什么)
-* @author A18ccms A18ccms_gmail_com   
-* @date 2018年8月9日 下午9:34:32
-* @version V1.0   
-*/
 package com.xyh.java.thread;
 
 import java.util.LinkedList;
