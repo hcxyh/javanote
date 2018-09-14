@@ -19,8 +19,8 @@ import java.util.Set;
 public class NioServer {
 	public static void main(String[] args) throws IOException {
 		
-        Selector serverSelector = Selector.open();  //负责轮询是否有新的连接
-        Selector clientSelector = Selector.open();	//负责轮询是否有新的数据可读
+        Selector serverSelector = Selector.open();  //负责轮询是否有新的连接,接收连接,但是不处理
+        Selector clientSelector = Selector.open();	//负责轮询是否有新的数据可读,真正处理连接的group
 
         new Thread(() -> {
             try {

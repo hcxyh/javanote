@@ -14,8 +14,27 @@
 		<activemq.version>5.15.4</activemq.version>
 		<spring_version>4.3.7.RELEASE</spring_version>
 	</properties>
+	
+	
+	
 
 	<dependencies>
+		
+		<!-- https://mvnrepository.com/artifact/org.mvel/mvel2 -->
+<dependency>
+    <groupId>org.mvel</groupId>
+    <artifactId>mvel2</artifactId>
+    <version>2.0</version>
+</dependency>
+		
+		
+		<!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+	<dependency>
+	    <groupId>io.netty</groupId>
+	    <artifactId>netty-all</artifactId>
+	    <version>4.1.25.Final</version>
+	</dependency>
+	
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
 		    <groupId>com.google.guava</groupId>

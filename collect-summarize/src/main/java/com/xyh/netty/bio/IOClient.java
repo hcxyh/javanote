@@ -1,6 +1,8 @@
 package com.xyh.netty.bio;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Date;
 
@@ -17,9 +19,22 @@ public class IOClient {
                 Socket socket = new Socket("127.0.0.1", 8000);
                 while (true) {
                     try {
-                        socket.getOutputStream().write((new Date() + ": hello world").getBytes());
-                        socket.getOutputStream().flush();
+                    	//发送
+                        OutputStream ops = socket.getOutputStream();
+//                        socket.getOutputStream().write((new Date() + ": hello world").getBytes());
+                        
+                        PrintWriter pw = new PrintWriter(ops);
+                        pw.write((new Date() + ": hello world"));
+                        pw.flush();
                         Thread.sleep(2000);
+                        
+                        //接收返回
+                        byte[] bytes = new byte[2048];
+                        socket.getInputStream().read(bytes);
+                        System.out.println(new String(bytes,"UTF-8"));
+                        
+                        pw.close();
+                        socket.close();
                     } catch (Exception e) {
                     }
                 }
