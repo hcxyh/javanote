@@ -22,6 +22,15 @@ public interface ExecutorServiceNote extends Executor{
 	 * Executors利用工厂模式向我们提供了4种线程池实现方式，但是并不推荐使用，
 	 * 原因是使用Executors创建线程池不会传入这个参数而使用默认值所以我们常常忽略这一参数，
 	 * 而且默认使用的参数会导致资源浪费，不可取
+	 * 
+	 * 避免使用无界队列
+		不要使用Executors.newXXXThreadPool()快捷方法创建线程池，因为这种方式会使用无界的任务队列，为避免OOM，
+		我们应该使用ThreadPoolExecutor的构造方法手动指定队列的最大长度：
+ExecutorService executorService = new ThreadPoolExecutor(2, 2, 
+                0, TimeUnit.SECONDS, 
+                new ArrayBlockingQueue<>(512), // 使用有界队列，避免OOM
+                new ThreadPoolExecutor.DiscardPolicy());
+	 * 
 	 */
 	
 	/**
