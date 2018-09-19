@@ -6,6 +6,14 @@ package com.xyh.java.jdk8;
  */
 public class CompletableFuture {
 	
+	/**
+	 *  a异步, 
+	 *  future , futureTask
+	 *  @async 
+	 *  
+	 * 
+	 */
+	
 	
 
 }

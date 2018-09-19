@@ -3,6 +3,10 @@
 * @author xueyh
 * @date 2018年8月12日 下午4:03:26
 * 
+* TODO 
+* 使用注解和代码或者xml实现event.
+* 理解Oberver和发布订阅的区别,
+* 
 */
 package com.xyh.spring.eventlistener;
 
