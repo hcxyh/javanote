@@ -30,6 +30,8 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
      * a 客户端和服务端TCP链路链路建立成功之后
      */
     public void channelActive(ChannelHandlerContext ctx) {
+    	
+    	//发送消息
 	ctx.writeAndFlush(firstMessage);
     }
     

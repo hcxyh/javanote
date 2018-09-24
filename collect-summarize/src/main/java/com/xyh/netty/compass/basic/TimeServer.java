@@ -10,6 +10,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public class TimeServer {
+	
+	private SocketChannel socketChannel;
 
     public void bind(int port) throws Exception {
 	
@@ -30,6 +32,22 @@ public class TimeServer {
 	    
 	    // 绑定端口，同步等待端口绑定成功
 	    ChannelFuture f = b.bind(port).sync();
+	    
+	    try {
+			// 判断是否连接成功
+			if (f.isSuccess()) {
+				// 得到管道，便于通信
+				socketChannel = (SocketChannel) f.channel();
+				System.out.println("客户端开启成功...");
+			}
+			else{
+				System.out.println("客户端开启失败...");
+			}
+			// 等待客户端链路关闭，就是由于这里会将线程阻塞，导致无法发送信息，所以我这里开了线程
+			f.channel().closeFuture().sync();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} 
 
 	    // 等待服务端监听端口关闭
 	    f.channel().closeFuture().sync();
@@ -63,5 +81,12 @@ public class TimeServer {
 	}
 	new TimeServer().bind(port);
     }
+    
+    public void sendMessage(Object msg) {
+		if (socketChannel != null) {
+			socketChannel.writeAndFlush(msg);
+		}
+	}
+
 }
 

@@ -32,6 +32,8 @@ public class NettyClientBootstrap {
         this.host = host;
         start();
     }
+    
+    
     private void start() throws InterruptedException {
         EventLoopGroup eventLoopGroup=new NioEventLoopGroup();
         Bootstrap bootstrap=new Bootstrap();

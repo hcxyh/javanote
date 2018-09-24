@@ -16,8 +16,7 @@ public class NettyChannelMap {
     
 	/**
 	 * TODO 
-	 * netty不是提供了原生的ChannelGroups来做map的事情.
-	 * 就是服务端启动的时候的两个EventLoopGroup之一.
+	 * netty提供了原生的ChannelGroups来做map的事情.
 	 * public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 	 */
 	
