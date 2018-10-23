@@ -22,6 +22,7 @@
 		<module>my-rpc</module>
 		<module>springboot-parent</module>
 		<module>quartz-cluster</module>
+		<module>vertx-app</module>
 	</modules>
 
 
