@@ -29,7 +29,7 @@ public class NettyClientHandler extends SimpleChannelInboundHandler<BaseMsg> {
             }
         }
     }
-
+    
     protected void messageReceived(ChannelHandlerContext channelHandlerContext, BaseMsg baseMsg) throws Exception {
         MsgType msgType=baseMsg.getType();
         switch (msgType){
