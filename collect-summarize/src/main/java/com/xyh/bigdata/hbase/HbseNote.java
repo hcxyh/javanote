@@ -23,8 +23,6 @@ public class HbseNote {
             hbase中一条数据的唯一标识.
     }
 
-
-
     1.HBase
     Hbase可以自如的存储结构化和非结构化数据。
     Hbase不允许跨行的事务,可以在一行的某一列存储整数,而在另一行的同一列来存储字符串，
@@ -76,21 +74,78 @@ public class HbseNote {
                         scan  'tabName'
                             返回所有的行数据
                             返回的顺序是按行的名字进行排序,hbase称之为 rowKsy(行键).
-
-
-
+                    4. list --> 列出所有的表
+                       describe 'tabName' 查看该表的默认参数
 
               }
 
-            java api 交互
+            eg:以twitter为例,分析hbase的使用.
+                用户（users）， 推贴（），关系（relation）
+                list --> 列出所有的表
 
+            1.hbase的表中至少需要有一个 columnFamily 列族.列族直接影响数据存储的物理性质.
+            创建表时必须至少指定一个列族，之后还可以对列族进行修改(很麻烦).
+
+
+
+            java api 交互：
+                    (显示设定配置信息来获取连接，或者通过hbase-site.xml文件获取配置信息)
+                    Configuration myConf = HBaseConfiguration.create();
+                    myConf.set("parameter_name","parameter_value");
+                    HTableInterface myHbaseTab = new HTable(myconf,"tabName");
+                * hbase客户端需要配置 zookeeper quorum地址来获取连接.
+
+                habse的连接管理:
+                    创建表是一个开销很大的操作,需要占用比较多的网络资源.与建表句柄相比,使用连接池比较好.
+                    连接从连接池中获取,然后再返回连接池.
+                  HTablePool hp = new HTablePool();
+                  HTableInterface userTable = pool.getTable("tableName");
+                  ````
+                  userTable.close(); 返回连接资源到连接池.
+                1.数据操作
+                    GET（读），put（写），delete（删除）,scan(扫描),Increment(递增)
+
+                    Put p = new Put(Bytes.toBytes("rowkey"));
+                    hbase中所有的数据都是作为原始数据(raw data)使用字节数组进行存储的.
+                    p.add(Bytes.toBytes("columnFamily"),Bytes.toBytes("columnName1"),Bytes.toBytes("columnName1"))
+                    p.add(Bytes.toBytes("columnFamily"),Bytes.toBytes("columnName2"),Bytes.toBytes("columnName2"))
+                    p.add(Bytes.toBytes("columnFamily"),Bytes.toBytes("columnName3"),Bytes.toBytes("columnName3"))
+                    hbase使用坐标来定位数据,rowkey是第一层,columnfamily是第二层,(列族代表一组列).
+                    再下一坐标是列限定符(column qualifier),简称列(column)或标志(qual)
+                    三个坐标可以唯一确定数据单元(cell）的位置.[rowkey,columnfamily,column qual]
+                    userTable.put(p);
+                    userTable.close();
+                    修改数据的方式和新增是一样的,创建put对象,在正确的坐标上给出数据。
 
            2.读数据
+                工作机制
+                1.无论新增还是修改已有的行,hbase接到命令后存下变化信息或者写入失败抛出异常.
+                默认情况下,执行写入操作时会写入到两个地方.
+                    a)预写时日志（write-ahead-log）WAL
+                    b)MemStore(内存内的写入缓冲区)，hbase数据在永久写入磁盘之前在这里进行累积.当MemStore填满后，数据会刷写
+                    到硬盘,生成一个HFile（hbase的底层存储格式）.
+                    HFile对应于列族,一个列族可以有多个HFile，但一个HFile不能存储多个列族的数据.
+                    (在集群的每个节点上,每个列族有一个MemStore)memStore的大小hbase-site.xml文件里的系统级属性
+                    hbase.hregion.mwmstore.flush.size来确定.
+                    大型分布式系统的故障很常见,试想如果在MemStore没有存储到HFile之前发生了故障.内存中没有写入硬盘的数据
+                    就会丢失.hbase的应对办法是在写动作完成之前,先写入WAL,hbase集群中的每台服务器维护一个WAL来记录发生的变化.
+                    WAL是底层文件系统的一个文件,知道wal新纪录被写入完成后,写动作才被认为真正完成.
+                    (?如果在普通的文件系统类如linux-ext，windows的fat32，ndfs上如何提供wal的功能)
+                    一般情况下,hbase使用hadoop分布式文件系统hdfs来作为底层文件系统
+                    如果hbase服务器宕机,没有从memstore写入到hfile的数据可以通过wal进行恢复.
+                    每台服务器有一个WAL,给这台服务器所有的表和他们的列族共享.
+                    p.setWriteToWal（false）; //会有数据丢失且不可恢复的风险,但是可以提升写性能.
 
-
+                只有当这两个地方都写入的变化信息都得到确认之后,才认为写动作完成.
            3.取数据
-
-
+                Get g = new Get(Bytes.toByte("rowKey"));
+                Result r = userTable.get(g);
+                返回一个包含数据的result实例.包含所有列族的所有列。
+                g.addFamily(Bytes.toBytes("colimnFamily"));
+                g.addColumn(Bytes.toBytes("columnfamily"),Bytes.toBytes("columnName1"));
+                g.addColumn(Bytes.toBytes("columnfamily"),Bytes.toBytes("columnName2")); //缩小查找范围
+                byte[] b = r.getValue(Bytes.toBytes("columnName"));  //检索特定值，将返回值转换为字符串
+                
 
    */
 
