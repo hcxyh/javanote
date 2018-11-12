@@ -258,7 +258,83 @@ public class ActiveMqNote {
     	</persistenceAdapter>
 		directory : 指定持久化消息的存储目录
     	journalMaxFileLength : 指定保存消息的日志文件大小，具体根据你的实际应用配置 　
+		
+		2018.11.7
+		1.1.1、点对点：Queue，不可重复消费
+消息生产者生产消息发送到queue中，然后消息消费者从queue中取出并且消费消息。
+消息被消费以后，queue中不再有存储，所以消息消费者不可能消费到已经被消费的消息。Queue支持存在多个消费者，但是对一个消息而言，只会有一个消费者可以消费。
+		1.2、发布/订阅：Topic，可以重复消费
+消息生产者（发布）将消息发布到topic中，同时有多个消息消费者（订阅）消费该消息。和点对点方式不同，发布到topic的消息会被所有订阅者消费。
 
+2.1、点对点模式
+生产者发送一条消息到queue，一个queue可以有很多消费者，但是一个消息只能被一个消费者接受，当没有消费者可用时，这个消息会被保存直到有 一个可用的消费者，所以Queue实现了一个可靠的负载均衡。
+
+2.2、发布订阅模式
+发布者发送到topic的消息，只有订阅了topic的订阅者才会收到消息。topic实现了发布和订阅，当你发布一个消息，所有订阅这个topic的服务都能得到这个消息，所以从1到N个订阅者都能得到这个消息的拷贝。
+
+对于消费者而言有两种方式从消息中间件获取消息：
+①Push方式：由消息中间件主动地将消息推送给消费者；
+②Pull方式：由消费者主动向消息中间件拉取消息。
+比较：
+采用Push方式，可以尽可能快地将消息发送给消费者(stream messages to consumers as fast as possible)
+而采用Pull方式，会增加消息的延迟，即消息到达消费者的时间有点长(adds significant latency per message)。
+但是，Push方式会有一个坏处：
+如果消费者的处理消息的能力很弱(一条消息需要很长的时间处理)，而消息中间件不断地向消费者Push消息，消费者的缓冲区可能会溢出。
+		
+		ActiveMQ是怎么解决这个问题的呢？那就是  prefetch limit
+
+prefetch limit 规定了一次可以向消费者Push(推送)多少条消息。
+
+Once the prefetch limit is reached, no more messages are dispatched to the consumer 
+until the consumer starts sending back acknowledgements of messages (to indicate that the message has been processed)
+
+当推送消息的数量到达了perfetch limit规定的数值时，消费者还没有向消息中间件返回ACK，消息中间件将不再继续向消费者推送消息。
+prefetch limit设置的大小根据场景而定：
+那prefetch limit的值设置为多少合适？视具体的应用场景而定。
+
+If you have very few messages and each message takes a very long time to process 
+you might want to set the prefetch value to 1 so that a consumer is given one message at a time. 
+
+如果消息的数量很少(生产者生产消息的速率不快)，但是每条消息 消费者需要很长的时间处理，那么prefetch limit设置为1比较合适。
+这样，消费者每次只会收到一条消息，当它处理完这条消息之后，向消息中间件发送ACK，此时消息中间件再向消费者推送下一条消息。
+
+prefetch limit 设置成0意味着什么？意味着变成 拉pull模式。
+
+Specifying a prefetch limit of zero means the consumer will poll for more messages, one at a time, 
+instead of the message being pushed to the consumer.
+意味着此时，消费者去轮询消息中间件获取消息。不再是Push方式了，而是Pull方式了。即消费者主动去消息中间件拉取消息。
+prefetch Limit>0即为prefetch，=0为Pull，看起来没有不prefetch的push，push都要设置prefetch。
+另外，对于prefetch模式（，那么消费需要进行响应ACK。因为服务器需要知道consumer消费的情况。
+perfetch limit是“消息预取”的值，这是针对消息中间件如何向消费者发消息 而设置的。
+与之相关的还有针对 消费者以何种方式向消息中间件返回确认ACK(响应)：
+比如消费者是每次消费一条消息之后就向消息中间件确认呢？还是采用“延迟确认”---即采用批量确认的方式(消费了若干条消息之后，统一再发ACK)。
+		
+		
+在程序中如何采用Push方式或者Pull方式呢？
+	1.从是否阻塞来看，消费者有两种方式获取消息。同步方式和异步方式。
+	同步方式使用的是ActiveMQMessageConsumer的receive()方法。而异步方式则是采用消费者实现MessageListener接口，监听消息。
+	同步方式：
+		使用同步方式receive()方法获取消息时，prefetch limit即可以设置为0，也可以设置为大于0
+		prefetch limit为零 意味着：
+			“receive()方法将会首先发送一个PULL指令并阻塞，直到broker端返回消息为止，这也意味着消息只能逐个获取(类似于Request<->Response)”
+		prefetch limit 大于零 意味着：
+			“broker端将会批量push给client一定数量的消息(<= prefetch)，client端会把这些消息(unconsumed Message)放入到本地的队列中，
+		只要此队列有消息，那么receive方法将会立即返回（并消费），当一定量的消息ACK之后，broker端会继续批量push消息给client端。” 
+	异步方式：
+	当使用MessageListener异步获取消息时，prefetch limit必须大于零了。
+	因为，prefetch limit 等于零 意味着消息中间件不会主动给消费者Push消息，而此时消费者又用MessageListener被动获取消息(不会主动去轮询消息)。
+	这二者是矛盾的。
+	此外，还有一个要注意的地方，即消费者采用同步获取消息(receive方法) 与 异步获取消息的方法(MessageListener) ，对消息的确认时机是不同的。
+	这里提到了这篇文章：http://shift-alt-ctrl.iteye.com/blog/2020182 文章名《ActiveMQ消息传送机制以及ACK机制详解》
+		
+	Producer客户端使用来发送消息的， Consumer客户端用来消费消息；
+	它们的协同中心就是ActiveMQ broker,broker也是让producer和consumer调用过程解耦的工具，最终实现了异步RPC/数据交换的功能。
+	随着ActiveMQ的不断发展，支持了越来越多的特性，也解决开发者在各种场景下使用ActiveMQ的需求。
+	比如producer支持异步调用；
+		使用flow control机制让broker协同consumer的消费速率；
+		consumer端可以使用prefetchACK来最大化消息消费的速率；
+		提供"重发策略"等来提高消息的安全性等。
+		
 	 *
 	 */
 

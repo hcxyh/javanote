@@ -1,5 +1,10 @@
 package com.xyh.apache.guava.retry;
 
+/**
+ * https://blog.csdn.net/aitangyong/article/details/53886293
+ * @author xyh
+ *
+ */
 public class GuavaRetry {
 	
 	/**
