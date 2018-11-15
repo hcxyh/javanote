@@ -15,6 +15,10 @@ public class LambdaDemo {
 		 */
 		
 		
+		Runnable runnable = () ->  { System.out.println("runnable is run!"); };
+		
+		MyInterface myInterface = (a) ->  { System.out.println(a); };
+		
 		
 //		final String a = "123";
 //		///第二种，使用Lambda表达式来代替匿名接口方法
