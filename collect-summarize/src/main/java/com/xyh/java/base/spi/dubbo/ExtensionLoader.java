@@ -24,7 +24,7 @@ import com.xyh.spring.util.Assert;
  */
 public class ExtensionLoader<T> {
 	
-	
+	/**
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExtensionLoader.class);
 	
 	private static final String SERVICE_DIR = "META-INF/services";
@@ -204,16 +204,18 @@ public class ExtensionLoader<T> {
 		return ExtensionLoader.class.getClassLoader();
 	}
 	
-	
+	*/
 	/**
 	 * 定义系统的编码格式
-	 */
+	 
 	public static final Charset UTF8 = Charset.forName("utf-8");
 	public static final Charset GBK = Charset.forName("gbk");
 	
 	public static Charset defaultCharSet() {
 		return UTF8;
 	}
+	*/
+	
 	
 	
 }
