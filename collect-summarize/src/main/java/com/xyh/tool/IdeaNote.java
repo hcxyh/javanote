@@ -14,6 +14,9 @@ public class IdeaNote {
 
     /**
      *
+
+     ctrl + alt + b / ctrl + h  查看类的继承关系
+
      alt+7 查看当前类的 struct  --> 比较相像于  outline
      alt +1 查看当前project 的机构
 
