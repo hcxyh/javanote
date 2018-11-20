@@ -3,6 +3,7 @@ package com.xyh.bigdata.batch.forkjoin;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
+import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.RecursiveTask;
 
 /**
@@ -12,6 +13,27 @@ import java.util.concurrent.RecursiveTask;
  */
 public class TestForkJoin {
 	private static final Integer MAX = 200;
+	
+	
+	static class MyForkJoinAction extends RecursiveAction{
+		
+		private int startValue;
+		private int endValue;
+		private int flag;
+		
+		  public MyForkJoinAction(int startValue , int endValue) {
+	            this.startValue = startValue;
+	            this.endValue = endValue;
+	        }
+		
+		
+		@Override
+		protected void compute() {
+			
+		}
+		
+	}
+	
 
     static class MyForkJoinTask extends RecursiveTask<Integer> {
         // 子任务开始计算的值

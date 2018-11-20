@@ -2,12 +2,14 @@ package com.xyh.java.jdk8.stream;
 
 
 /**
- * Java8 Stream Note
+ * Java8 Stream Note 
+ * 
+ *   parreleer 并行的计算底层依赖 fork/join 实现
+ *   https://www.cnblogs.com/Dorae/p/7779246.html
  */
 public class StreamNote {
 
     /*
-
         Stream跟Iterator的差别是
             1.无存储：Stream是基于数据源的对象，它本身不存储数据元素，
             而是通过管道将数据源的元素传递给操作。
