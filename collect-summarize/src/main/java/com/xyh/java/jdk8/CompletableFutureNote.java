@@ -12,18 +12,15 @@ public class CompletableFutureNote {
 	 *  a异步, 
 	 *  future , futureTask
 	 *  @async  spring
-	 *
 	 */
 
 	/*
 
 	CompletableFuture
 	public static <U> CompletableFuture<U> supplyAsync(Supplier<U> supplier)
-	public static <U> CompletableFuture<U> supplyAsync(Supplier<U> supplier,
-													   Executor executor)
+	public static <U> CompletableFuture<U> supplyAsync(Supplier<U> supplier,Executor executor)
 	public static CompletableFuture<Void> runAsync(Runnable runnable)
-	public static CompletableFuture<Void> runAsync(Runnable runnable,
-												   Executor executor);
+	public static CompletableFuture<Void> runAsync(Runnable runnable,Executor executor);
 
 	 其中supplyAsync()方法用于那些需要返回值的场景,比如计算某个数据,而runAsync()方法用于没有返回值的场景,比如,仅仅是简单地执行某一个异步动作.
      在这两对方法中,都有一个方法可以接手一个Executor参数,这使我们可以让Supplier<U>或者Runnable在指定的线程池工作,如果不指定,则在默认的系统公共的ForkJoinPool.common线程池中执行.
@@ -314,4 +311,52 @@ public class CompletableFutureNote {
 		System.out.println(completableFuture3.get());
 	}
 
+
+	/*
+	thenAccept()
+	public CompletionStage<Void> thenAccept(Consumer<? super T> action);
+	public CompletionStage<Void> thenAcceptAsync(Consumer<? super T> action);
+	public CompletionStage<Void> thenAcceptAsync(Consumer<? super T> action,Executor executor);
+　　功能:当前任务正常完成以后执行,当前任务的执行结果可以作为下一任务的输入参数,无返回值.
+
+　　场景:执行任务A,同时异步执行任务B,待任务B正常返回之后,用B的返回值执行任务C,任务C无返回值
+	 */
+	public void test10(){
+		CompletableFuture<String> futureA = CompletableFuture.supplyAsync(() -> "任务A");
+		CompletableFuture<String> futureB = CompletableFuture.supplyAsync(() -> "任务B");
+		CompletableFuture<String> futureC = futureB.thenApply(b -> {
+			System.out.println("执行任务C.");
+			System.out.println("参数:" + b);//参数:任务B
+			return "a";
+		});
+	}
+	/*
+	thenRun(..)
+		public CompletionStage<Void> thenRun(Runnable action);
+		public CompletionStage<Void> thenRunAsync(Runnable action);
+		public CompletionStage<Void> thenRunAsync(Runnable action,Executor executor);
+　　功能:对不关心上一步的计算结果，执行下一个操作
+　　场景:执行任务A,任务A执行完以后,执行任务B,任务B不接受任务A的返回值(不管A有没有返回值),也无返回值
+
+	 */
+	public void test11(){
+		CompletableFuture<String> futureA = CompletableFuture.supplyAsync(() -> "任务A");
+		futureA.thenRun(() -> System.out.println("执行任务B"));
+	}
+
+	/*
+	thenApply(..)
+		public <U> CompletableFuture<U>     thenApply(Function<? super T,? extends U> fn)
+		public <U> CompletableFuture<U>     thenApplyAsync(Function<? super T,? extends U> fn)
+		public <U> CompletableFuture<U>     thenApplyAsync(Function<? super T,? extends U> fn, Executor executor)
+　　功能:当前任务正常完成以后执行，当前任务的执行的结果会作为下一任务的输入参数,有返回值
+　　场景:多个任务串联执行,下一个任务的执行依赖上一个任务的结果,每个任务都有输入和输出
+　　实例1:异步执行任务A,当任务A完成时使用A的返回结果resultA作为入参进行任务B的处理,可实现任意多个任务的串联执行
+	 */
+	public void test12(){
+		CompletableFuture<String> futureA = CompletableFuture.supplyAsync(() -> "hello");
+		CompletableFuture<String> futureB = futureA.thenApply(s->s + " world");
+		CompletableFuture<String> future3 = futureB.thenApply(String::toUpperCase);
+		System.out.println(future3.join());
+	}
 }
