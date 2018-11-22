@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class WebFluxBase {
 	
-	/**
+	/*
 	 jdk9的响应式流
 	 	就是reactive stream，也就是flow。其实和jdk8的stream没有一点关系。
 	 	[Stream的底层实现 https://blog.csdn.net/u013898617/article/details/79146389 ]
@@ -51,7 +51,7 @@ public class WebFluxBase {
 	 * 输入源数据 integer, 过滤掉小于0的, 然后转换成字符串发布出去
 	 */
 	
-	/**
+	/*
 	class  MyProcessor extends SubmissionPublisher<String> implements Processor<Integer, String> {
 
 	  private Subscription subscription;  
@@ -172,8 +172,8 @@ public class WebFluxBase {
 	  }
 	}
 	
-	/**
-	背压
+	/*
+		  背压
 	背压依我的理解来说，是指订阅者能和发布者交互（通过代码里面的调用request和cancel方法交互），可以调节发布者发布数据的速率，
 	解决把订阅者压垮的问题。关键在于上面例子里面的订阅关系Subscription这个接口，他有request和cancel 2个方法，
 	用于通知发布者需要数据和通知发布者不再接受数据。
@@ -264,7 +264,7 @@ public class WebFluxBase {
 	
 	
 	
-	/**
+	/*
 	 spring5的webflux
 		上面的基础和原理掌握之后，学习webflux就水到渠成了！webflux的关键是自己编写的代码里面返回流（Flux/Mono），
 		spring框架来负责处理订阅。 spring框架提供2种开发模式来编写响应式代码，使用mvc之前的注解模式和使用router function模式，都需要我们的代码返回流，

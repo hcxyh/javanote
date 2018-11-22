@@ -25,7 +25,7 @@ import java.util.concurrent.Future;
  */
 public class ReactorNote <T>{
 
-    /**
+    /*
      编程范式:
      oop:面向对象编程 --> (抽象,封装，继承，多态) 是对数据的抽象
      fp:函数式编程是对   行为的抽象. {因为不存在多个对象操作同一个属性,不会存在线程安全问题,
@@ -53,7 +53,7 @@ public class ReactorNote <T>{
      　　Wrapper配置(GC压力):例如 new Wrapper<T>(event)
      */
 
-    /**
+    /*
      1.反应式编程范例通常以面向对象的语言呈现，作为Observer设计模式的扩展。
      还可以将主要的反应流模式与熟悉的迭代器设计模式进行比较，
      因为在所有这些库中对Iterable- Iterator对存在双重性 。

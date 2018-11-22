@@ -26,7 +26,8 @@ public class ReactorCoreTest {
 
     }
 
-    //        Flux并Mono使用Java 8 lambdas。.subscribe()对于不同的回调组合，您有多种变体选择lambdas，
+    // Flux并Mono使用Java 8 lambdas。.subscribe()对于不同的回调组合，
+    // 您有多种变体选择lambdas，
     public void test1(){
         subscribe(); //	订阅并触发序列。
 

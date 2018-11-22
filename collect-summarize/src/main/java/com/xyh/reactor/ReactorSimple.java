@@ -70,7 +70,7 @@ public class ReactorSimple {
      */
 
 
-    /**
+    /*
      * 1.如何将数据概念化为流，Observable类及其各种运算符，
      * 以及从中创建Observable的工厂方法静态和动态来源。
      * 2.Observable是推送源，Observer是通过订阅行为消费此源的简单接口。
