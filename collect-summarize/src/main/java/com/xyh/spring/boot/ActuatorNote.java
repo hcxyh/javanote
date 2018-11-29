@@ -7,7 +7,7 @@ package com.xyh.spring.boot;
  */
 public class ActuatorNote {
 	
-	/**
+	/*
 	 * 1.endpoints(配置重启,优雅停机)
 			在重启之前首先发送重启命令到endpoint，或者用kill 进程ID的方式，千万不要用kill -9。
 			然后循环检测进程是否存在，如果服务正常停止了，进程也就不存在了，如果进程还在，证明还有未处理完的请求，停止1秒，继续检测。
