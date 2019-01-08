@@ -14,7 +14,40 @@ import net.sf.cglib.proxy.MethodProxy;
  *
  */
 public class VirtualMachineErrorNote {
-	
+
+    /*
+        java.lang.OutOfMemoryError: PermGen space 这个异常比较常见，
+        是说ＪＶＭ里的Perm内存区的异常溢出，
+        由于JVM在默认的情况下，Perm默认为64M，而很多程序需要大量的Perm区内存，
+        尤其使用到像Spring等框架的时候，由于需要使用到动态生成类，而这些类不能被GC自动释放，
+        所以导致OutOfMemoryError: PermGen space异常。解决方法很简单，增大JVM的
+        -XX:MaxPermSize 启动参数，就可以解决这个问题，
+        如过使用的是默认变量通常是64M[5.0 and newer: 64 bit VMs are scaled 30% larger; 1.4 amd64: 96m; 1.3.1 -client: 32m.]，改成128M就可以了，
+        -XX:MaxPermSize=128m。如果已经是128m（Eclipse已经是128m了），
+        就改成 256m。我一般在服务器上为安全起见，改成256m。
+
+        java.lang.OutOfMemoryError：heap space或 其它OutOfMemoryError，
+        这个异常实际上跟上面的异常是一个异常，但解决方法不同，所以分开来写。
+        上面那个异常是因为JVM的perm区内存区分少了引起的
+        （JVM的内存区分为 young,old,perm三种）。
+        而这个异常是因为JVM堆内存或者说总体分少了。解决方法是更改 -Xms -Xmx 启动参数，
+        通常是扩大1倍。xms是管理启动时最小内存量的，xmx是管里JVM最大的内存量的。
+        注：OutOfMemoryError可能有很多种原因，根据JVM Specification, 可能有一下几种情况，
+        我先简单列出。stack：stack分区不能动态扩展，或不足以生成新的线程。
+        Heap:需要更多的内存，而不能获得。Method Area :如果不能满足分配需求。
+        runtime constant pool(从Method Area分配内存)不足以创建class or interface。
+        native method stacks不能够动态扩展，或生成新的本地线程。
+
+        最后说说java.lang.StackOverflowError，老实说这个异常我也没碰见过，
+        但JVM Specification就提一下，规范上说有一下几种境况可能抛出这个异常，
+        一个是Stacks里的线程超过允许的时候，另一个是当native method要求更大的内存，
+        而超过native method允许的内存的时候。根据SUN的文档，
+        提高-XX:ThreadStackSize=512的值。
+
+        总的来说调优JVM的内存，组要目的就是在使用内存尽可能小的，使程序运行正常，
+        不抛出内纯溢出的bug。而且要调好最小内存，最大内存的比，避免GC时浪费太多时间，
+        尤其是要尽量避免FULL GC。
+     */
 	
 	//VM Args: -Xms20m -Xms20m - XX:+HeapDumpOnOutOfMemoryError
 	//HeapOOM (存放的是new出来的对象实例,注意测试时防止gc)

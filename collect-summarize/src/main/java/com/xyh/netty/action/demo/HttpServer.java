@@ -14,7 +14,7 @@ public class HttpServer {
 	
 	  public static void main(String[] args) throws InterruptedException {
 	        // 接收连接,但是不处理
-	        EventLoopGroup parentGroup = new NioEventLoopGroup();
+	        EventLoopGroup parentGroup = new NioEventLoopGroup(1);
 	        // 真正处理连接的group
 	        EventLoopGroup childGroup = new NioEventLoopGroup();
 

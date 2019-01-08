@@ -27,7 +27,6 @@
     </modules>
 
 
-
 	<properties>
 		<project.release.version>0.1.1-SNAPSHOT</project.release.version>
 		<!-- 开发发布编译变量 -->
