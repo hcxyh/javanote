@@ -24,7 +24,8 @@
 		<module>quartz-cluster</module>
 		<module>vertx-app</module>
         <module>note</module>
-    </modules>
+        <module>xian-2019</module>
+	</modules>
 
 
 	<properties>

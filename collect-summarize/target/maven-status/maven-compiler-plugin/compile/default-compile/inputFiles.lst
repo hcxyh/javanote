@@ -3,6 +3,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\guava\eventb
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\util\ShellUtils.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\base\HashCodeNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\tool\idea\Contact.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\longlive\RequestInfoVO.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\base\jmm\TestMain.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\secrity\Base64.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\guava\eventbus\EventListener.java
@@ -21,6 +22,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\boot\Configu
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\cache\redis\datatype\RedisDataType.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\action\shopcar\ShopController.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\secrity\file\package-info.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\longlive\NettyServerBootstrap.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\VolatileNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\compass\nio\MultiplexerTimeServer.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\clientpool\NettyChannelPool.java
@@ -37,6 +39,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\mq\activemq\topic\P
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\socket\bio\demo\MultithreadedDaytimeServer.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\jdk8\stream\StreamNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\middleware\db\package-info.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\lesson2\demo01\BlockingQueueMain.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\concurrent\cas\ConcurrentLinkedQueueNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\heartcheckandlongconn\server\NettyServerBootstrap.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\ThreadLocalNote.java
@@ -72,8 +75,10 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\optimize\SystemOpti
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\socket\nio\demo\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\clientpool\BusinessServerHandler.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\cache\redis\RedisPersistence.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\bigdata\hbase\HbaseNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\cache\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\lock\redis\OptimisticLockTest.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\lesson2\demo01\SeckillEventFactory.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\collection\queue\OrderDelay.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\AnnonationNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\operatingsystem\package-info.java
@@ -146,6 +151,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\lock\red
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\socket\nio\demo\NIOClient.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\lock\redis\RedisBasedDistributedLock.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\util\block\BlockingImpl.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\lesson2\demo01\SeckillEvent.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\cache\redis\test\TestNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\jdk8\test\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\zookeeper\client\demo\SeqTask.java
@@ -165,11 +171,13 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\concurrent\exe
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\heartcheckandlongconn\share\AskParams.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\serializable\protostuff\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\maven\MavenNote.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\longlive\MessageDecoder.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\cache\encache\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\proxy\dynamicproxy\jdk\IAdvice.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\mvc\message\MessageConvertNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\proxy\dynamicproxy\jdk\RealSubject.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\web\MvelNote.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\lesson2\DisruptorNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\db\mysql\MysqlSyncRedisCache.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\lock\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\proxy\dynamicproxy\jdk\Client.java
@@ -189,6 +197,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\secrity\demo\B
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\http\header\ContextType.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\db\mysql\LogTypeNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\reactor\rxjava\rxjava2examples\Rxjava2examples.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\lesson2\demo01\SeckillEventProduce.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\eventlistener\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\secrity\file\RSAEncrypt.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\async\AsyncConfig.java
@@ -199,17 +208,21 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\cache\RedisIntervie
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\lock\DbLock.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\Exception\VirtualMachineErrorNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\guava\EventBusDemo.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\bigdata\hbase\client\HbaseTest.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\mq\activemq\ActiveMqNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\concurrent\executor\MyRejectedExecutionHandler.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\base\spi\dubbo\ExtensionRecord.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\reactor\akka\AkkaNote1.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\zookeeper\client\demo\ZKTools.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\rpc\RpcProvider.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\base\jvm\test\JvmTest.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\reactor\rxjava\RxJavaSimpleExample.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\mq\activemq\base\TopicRequest.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\mq\activemq\queue\ConsumerQueueController.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\longlive\NettyClientHandler.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\http\Server\MyHttpRequest.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\batch\SpringBatchNote.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\NettyClient.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\cache\MyCacheRule.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\action\PackageInfo.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\compass\chat\SimpleChatServer.java
@@ -228,6 +241,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\zookeeper\re
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\retry\demo\HelloService.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\guava\GuavaNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\transaction\package-info.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\demo\MyEventHandler.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\boot\PropertiesProfile.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\middleware\rpc\simple\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\guava\doc\BasicUtilities\package-info.java
@@ -258,7 +272,6 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\microserver\restful
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\jar\SpringGracefulShutdownStart.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\boot\ActuatorNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\NettyActionNote.java
-D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\bigdata\hbase\HbseNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\concurrent\executor\magic\DarkMagic.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\reactor\rxjava\FlowDemo.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\reactor\springboot\WebFlux.java
@@ -267,6 +280,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\orm\package-info.ja
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\heartcheckandlongconn\share\ReplyBody.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\compass\aio\TimeClient.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\lock\redis\AbstractLock.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\lesson2\demo01\SeckillEventConsumer.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\secrity\FileHelper.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\http\ajax\AjaxParam.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\concurrent\executor\ExecutorCompletionServiceNote.java
@@ -289,6 +303,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\socket\SocketI
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\action\repeatsubmit\TokenHandlerInterceptor.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\action\shopcar\BuyerItem.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\heartcheckandlongconn\share\MsgType.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\TcpServerHandler.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\heartcheckandlongconn\share\AskMsg.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\bigdata\batch\BatchDemo.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\cache\redis\client\SocketServer.java
@@ -298,6 +313,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disrupt
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\cache\redis\HA\Sentinel.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\secrity\RSASignature.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\util\ThreadLocalUtil.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\longlive\NettyClientBootstrap.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\authority\shiro\Shiro.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\concurrent\copyonwrite\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\http\HttpNote.java
@@ -315,6 +331,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\socket\bio\dem
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\cache\redis\HA\RedisCluster.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\proxy\dynamicproxy\cglib\RealSubject.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\mq\activemq\base\TopicReceive.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\longlive\NettyServerHandler.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\middleware\elasticsearch\ElasticSearchNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\socket\nio\demo\EchoClient.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\heartcheckandlongconn\server\NettyChannelMap.java
@@ -331,6 +348,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\classloader\Cl
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\mq\rabbitmq\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\reactor\rxjava\RxJavaNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\proxy\staticproxy\RealSubject.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\demo\MyEventFactory.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\zookeeper\curator\CuratorNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\http\webservice\WebserviceNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\apache\guava\CachingLoaderNote.java
@@ -350,6 +368,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\concurrent\que
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\socket\bio\demo\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\compass\aio\AsyncTimeClientHandler.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\util\SpringStarter.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\demo\MyEvent.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\compass\chat\SimpleChatServerInitializer.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\queue\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\socket\nio\demo\EchoServer.java
@@ -361,8 +380,10 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\microserver\package
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\http\tcpip\HandleShackNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\operatingsystem\cache\CacheNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\secrity\demo\package-info.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\lesson2\demo01\SeckillEventMain.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\transaction\rw\DynamicDataSourceHolder.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\lock\zookeeper\SimpleDistributedLockMutex.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\thread\disruptor\demo\StartDisruptor.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\collection\CollentionNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\coding\scale\ASCLLNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\db\DbNote.java
@@ -373,6 +394,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\action\shopcar\Requ
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\heartcheckandlongconn\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\boot\shutdown\ShutdownConfig.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\tool\IdeaNote.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\MyNettyServer.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\rest\RestTemplateNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\middleware\elasticjob\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\tool\GitNote.java
@@ -408,6 +430,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\secrity\demo\R
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\middleware\rpc\dubbo\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\socket\nio\demo\NIOServer.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\container\Docker.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\HelloClient.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\cache\redis\HA\package-info.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\mq\activemq\topic\ConsumerTopicController.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\demo\HttpServerInitializer.java
@@ -437,6 +460,7 @@ D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\optimize\CPUandIO.j
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\authority\secrity\SpringSecrity.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\distribute\lock\DistributedLock.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\base\spi\dubbo\factory\SpiExtensionFactory.java
+D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\action\test\longlive\MessageEncoder.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\spring\transaction\TransactionalAnnotation.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\java\concurrent\queue\BlockingDequeNote.java
 D:\xyh\code\javanote\collect-summarize\src\main\java\com\xyh\netty\bio\IOClient.java

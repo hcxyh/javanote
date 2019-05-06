@@ -17,17 +17,19 @@ public class IOClient {
         new Thread(() -> {
             try {
                 Socket socket = new Socket("127.0.0.1", 8000);
-                while (true) {
+//                while (true) {
                     try {
                     	//发送
                         OutputStream ops = socket.getOutputStream();
 //                        socket.getOutputStream().write((new Date() + ": hello world").getBytes());
                         
                         PrintWriter pw = new PrintWriter(ops);
-                        pw.write((new Date() + ": hello world"));
+                        pw.write((new Date() + ": cccccccc"));
                         pw.flush();
                         Thread.sleep(2000);
                         
+                        
+//                        System.out.println("@@@@@@@@@@@@@@@@@");
                         //接收返回
                         byte[] bytes = new byte[2048];
                         socket.getInputStream().read(bytes);
@@ -37,7 +39,7 @@ public class IOClient {
                         socket.close();
                     } catch (Exception e) {
                     }
-                }
+//                }
             } catch (IOException e) {
             }
         }).start();

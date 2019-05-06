@@ -13,4 +13,6 @@
     <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
     
     <dubbo:annotation package="com.xyh.provider.service.impl"/>
+    <dubbo:protocol name="dubbo" port="20880"/>
+
 </beans>

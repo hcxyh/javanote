@@ -2,6 +2,7 @@ package com.xyh.netty.bio;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -17,23 +18,25 @@ public class IOServer {
 
         // (1) 接收新连接线程   ,此处可以使用线程池来进行优化,  n（client） --> m(server)
         new Thread(() -> {
-            while (true) {
+//            while (true) {
                 try {
                     // (1) 阻塞方法获取新的连接
                     Socket socket = serverSocket.accept();
-
                     // (2) 每一个新的连接都创建一个线程，负责读取数据
                     new Thread(() -> {
                         try {
                             byte[] data = new byte[1024];
                             InputStream inputStream = socket.getInputStream();
-                            while (true) {
+                            OutputStream outputStream = socket.getOutputStream();
                                 int len;
+//                                System.out.println(inputStream.read(data) +"111");
                                 // (3) 按字节流方式读取数据
                                 while ((len = inputStream.read(data)) != -1) {
                                     System.out.println(new String(data, 0, len));
                                 }
-                            }
+                            System.out.println("--------------");
+                            outputStream.write(data);
+                            outputStream.flush();
                         } catch (IOException e) {
                         }
                     }).start();
@@ -41,7 +44,7 @@ public class IOServer {
                 } catch (IOException e) {
                 }
 
-            }
+//            }
         }).start();
     }
     
